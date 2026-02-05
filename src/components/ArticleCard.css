@@ -11,24 +11,24 @@
   background: var(--bg-primary);
 }
 
-/* Blurred background image — subtle warm wash */
+/* Blurred background image — warm ambient wash */
 .card-bg {
   position: absolute;
   inset: -40px;
   background-size: cover;
   background-position: center;
-  filter: blur(80px) saturate(0.4) brightness(1.1);
+  filter: blur(80px) saturate(0.35) brightness(1.1);
   opacity: 0;
-  transition: opacity 1.5s ease;
+  transition: opacity 1.8s var(--ease-out);
   z-index: 0;
   mix-blend-mode: multiply;
 }
 
 .card-bg.loaded {
-  opacity: 0.15;
+  opacity: 0.12;
 }
 
-/* Overlay — very subtle */
+/* Overlay */
 .card-overlay {
   position: absolute;
   inset: 0;
@@ -36,48 +36,50 @@
   z-index: 1;
 }
 
-/* Content — editorial card */
+/* Content — floating paper card, Apple editorial */
 .card-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 540px;
-  padding: 2.5rem 2rem;
+  max-width: 520px;
+  padding: 2.5rem 2.25rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  gap: 1rem;
+  gap: 1.1rem;
   background: var(--bg-card);
-  border: var(--border-weight) solid var(--text-primary);
-  box-shadow: 6px 6px 0 var(--text-primary);
-  animation: cardEntrance 0.5s ease both;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: cardEntrance 0.6s var(--ease-out) both;
 }
 
 @keyframes cardEntrance {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px) scale(0.97);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Index pill — typographic stamp */
+/* Index pill — clean label */
 .card-index {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.25rem 0.6rem;
-  background: var(--text-primary);
-  color: var(--bg-card);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  padding: 0.3rem 0.7rem;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  border-radius: var(--radius-pill);
 }
 
 .card-emoji {
@@ -86,30 +88,22 @@
 }
 
 .card-number {
-  font-weight: 500;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
-/* Image — raw editorial frame */
+/* Image — softened frame */
 .card-image-wrapper {
   width: 100%;
   max-width: 200px;
   aspect-ratio: 1;
   overflow: hidden;
-  border: var(--border-weight) solid var(--text-primary);
+  border-radius: var(--radius-sm);
   opacity: 0;
-  transform: translateY(8px);
-  transition: all 0.5s ease;
+  transform: translateY(6px);
+  transition: all 0.5s var(--ease-out);
   flex-shrink: 0;
   position: relative;
-}
-
-.card-image-wrapper::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 4px solid var(--bg-card);
-  pointer-events: none;
 }
 
 .card-image-wrapper.loaded {
@@ -121,45 +115,46 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(20%) contrast(1.05);
-  transition: filter 0.4s ease;
+  filter: grayscale(10%) contrast(1.02);
+  transition: all 0.4s var(--ease-out);
 }
 
 .card-image-wrapper:hover .card-image {
-  filter: grayscale(0%) contrast(1.1);
+  filter: grayscale(0%) contrast(1.05);
+  transform: scale(1.03);
 }
 
-/* Description — category tag */
+/* Description — category label */
 .card-description {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
   color: var(--accent);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding-top: 0.25rem;
-  border-top: 1px solid var(--text-muted);
+  letter-spacing: 0.06em;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border-light);
   align-self: flex-start;
 }
 
-/* Title — big editorial serif */
+/* Title — editorial serif, confident */
 .card-title {
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.12;
   color: var(--text-primary);
   max-width: 100%;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
   text-wrap: balance;
-  animation: clipReveal 0.6s ease 0.1s both;
+  animation: clipReveal 0.6s var(--ease-out) 0.15s both;
 }
 
-/* Extract — readable mono */
+/* Extract — clean, readable body text */
 .card-extract {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  line-height: 1.7;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.65;
   color: var(--text-secondary);
   max-width: 100%;
   display: -webkit-box;
@@ -172,41 +167,39 @@
 /* Actions */
 .card-actions {
   margin-top: 0.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--text-muted);
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border-light);
   width: 100%;
 }
 
-/* Read more — brutalist button */
+/* Read more — Apple pill button */
 .btn-read-more {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.25rem;
+  padding: 0.65rem 1.4rem;
   background: var(--text-primary);
   color: var(--bg-card);
   text-decoration: none;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   border: none;
-  transition: all 0.15s ease;
-  box-shadow: 3px 3px 0 var(--accent);
+  border-radius: var(--radius-pill);
+  transition: all 0.3s var(--ease-out);
+  cursor: pointer;
 }
 
 .btn-read-more:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 var(--accent);
-  background: var(--text-primary);
-  color: var(--bg-card);
+  background: var(--accent);
+  color: #FFFDF8;
+  transform: scale(1.03);
 }
 
 .btn-read-more:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0 var(--accent);
-  transition-duration: 0.05s;
+  transform: scale(0.97);
+  transition-duration: 0.1s;
 }
 
 /* Scroll hint */
@@ -218,27 +211,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
   color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  font-weight: 400;
-  animation: floatHint 2.5s ease-in-out infinite;
+  font-weight: 500;
+  animation: floatHint 2.8s ease-in-out infinite;
 }
 
 @keyframes floatHint {
-  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
-  50% { transform: translateX(-50%) translateY(5px); opacity: 0.8; }
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.35; }
+  50% { transform: translateX(-50%) translateY(4px); opacity: 0.7; }
 }
 
 /* Mobile */
 @media (max-width: 480px) {
   .card-content {
-    padding: 2rem 1.25rem;
+    padding: 2rem 1.5rem;
     margin: 0 0.75rem;
-    box-shadow: 4px 4px 0 var(--text-primary);
+    border-radius: var(--radius-md);
   }
 
   .card-title {
@@ -246,7 +239,7 @@
   }
 
   .card-extract {
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     -webkit-line-clamp: 4;
   }
 
@@ -255,10 +248,10 @@
   }
 }
 
-/* Tall phones */
+/* Tall phones — more breathing room */
 @media (min-height: 800px) {
   .card-content {
-    gap: 1.15rem;
-    padding: 2.75rem 2.25rem;
+    gap: 1.25rem;
+    padding: 2.75rem 2.5rem;
   }
 }

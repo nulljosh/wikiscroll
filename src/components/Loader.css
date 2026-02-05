@@ -13,11 +13,10 @@
 
 .loader-fullscreen {
   background: var(--bg-primary);
-  background-image: var(--paper-grain);
   position: fixed;
   inset: 0;
   z-index: 100;
-  animation: loaderFadeIn 0.3s ease both;
+  animation: loaderFadeIn 0.4s var(--ease-out) both;
 }
 
 @keyframes loaderFadeIn {
@@ -26,31 +25,26 @@
 }
 
 .loader-spinner {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   position: relative;
 }
 
-/* Brutalist spinner — rotating square */
+/* Clean spinner — Apple-style rotating ring */
 .spinner-ring {
   width: 100%;
   height: 100%;
-  border: var(--border-weight) solid var(--text-primary);
-  animation: spinBrutal 0.8s steps(4) infinite;
+  border: 2.5px solid var(--border-light);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spinSmooth 0.8s ease-in-out infinite;
 }
 
 .spinner-ring::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  transform: translate(-50%, -50%);
+  display: none;
 }
 
-@keyframes spinBrutal {
+@keyframes spinSmooth {
   to { transform: rotate(360deg); }
 }
 
@@ -58,36 +52,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  animation: fadeUp 0.5s ease 0.2s both;
+  gap: 0.6rem;
+  animation: fadeUp 0.5s var(--ease-out) 0.2s both;
 }
 
 .loader-brand {
   font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 900;
-  letter-spacing: -0.04em;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
-  text-transform: uppercase;
   position: relative;
 }
 
 .loader-brand::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 3px;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 2.5px;
   background: var(--accent);
+  border-radius: 2px;
 }
 
 .loader-subtitle {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
   color: var(--text-muted);
-  letter-spacing: 0.1em;
-  font-weight: 400;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-weight: 500;
   margin-top: 0.5rem;
 }

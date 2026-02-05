@@ -15,12 +15,13 @@
   align-items: flex-start;
   text-align: left;
   gap: 1rem;
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 2.25rem;
   max-width: 420px;
   background: var(--bg-card);
-  border: var(--border-weight) solid var(--text-primary);
-  box-shadow: 6px 6px 0 var(--accent);
-  animation: fadeUp 0.5s ease both;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: fadeUp 0.5s var(--ease-out) both;
 }
 
 .error-emoji {
@@ -30,45 +31,43 @@
 .error-title {
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 900;
+  font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.02em;
-  text-transform: uppercase;
 }
 
 .error-text {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
-/* Retry — brutalist button */
+/* Retry — Apple pill button */
 .btn-retry {
   margin-top: 0.5rem;
-  padding: 0.6rem 1.25rem;
+  padding: 0.65rem 1.4rem;
   background: var(--text-primary);
   color: var(--bg-card);
   border: none;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: all 0.15s ease;
-  box-shadow: 3px 3px 0 var(--accent);
+  transition: all 0.3s var(--ease-out);
 }
 
 .btn-retry:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 var(--accent);
+  background: var(--accent);
+  color: #FFFDF8;
+  transform: scale(1.03);
 }
 
 .btn-retry:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0 var(--accent);
-  transition-duration: 0.05s;
+  transform: scale(0.97);
+  transition-duration: 0.1s;
 }
 
 /* Error Boundary */
@@ -89,10 +88,11 @@
   align-items: flex-start;
   text-align: left;
   gap: 1rem;
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 2.25rem;
   background: var(--bg-card);
-  border: var(--border-weight) solid var(--text-primary);
-  box-shadow: 6px 6px 0 var(--accent);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .error-boundary-content .error-icon {
@@ -102,14 +102,13 @@
 .error-boundary-content h2 {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -0.02em;
-  text-transform: uppercase;
 }
 
 .error-boundary-content p {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.6;
 }
