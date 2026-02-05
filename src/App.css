@@ -13,31 +13,36 @@
   left: 0;
   right: 0;
   z-index: 50;
-  padding: 1.25rem 1.75rem;
-  background: linear-gradient(
-    180deg,
-    rgba(8, 8, 16, 0.92) 0%,
-    rgba(8, 8, 16, 0.6) 60%,
-    rgba(8, 8, 16, 0) 100%
-  );
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  padding: 1rem 1.5rem;
+  background: var(--bg-primary);
+  border-bottom: var(--border-weight) solid var(--text-primary);
   pointer-events: none;
 }
 
 .app-logo {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 900;
   color: var(--text-primary);
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  letter-spacing: -0.025em;
+  gap: 0.5rem;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .logo-icon {
-  font-size: 1.35rem;
-  filter: drop-shadow(0 0 8px rgba(120, 130, 255, 0.3));
+  font-size: 1.2rem;
+  display: none; /* Hide emoji, let typography speak */
+}
+
+.app-logo::before {
+  content: '¶';
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-weight: 400;
+  line-height: 1;
 }
 
 /* Scroll container */
@@ -54,68 +59,53 @@
   overscroll-behavior: contain;
 }
 
-/* Auto-scroll button — pill-shaped glass */
+/* Auto-scroll button */
 .auto-scroll-btn {
   position: fixed;
-  bottom: 2.5rem;
-  right: 1.75rem;
+  bottom: 2rem;
+  right: 1.5rem;
   z-index: 50;
-  width: 56px;
-  height: 56px;
-  border-radius: 28px;
-  border: 1px solid var(--border-glass);
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur)) saturate(1.6);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.6);
-  color: var(--text-secondary);
+  width: 48px;
+  height: 48px;
+  border-radius: 0;
+  border: var(--border-weight) solid var(--text-primary);
+  background: var(--bg-card);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.5s var(--ease-out-expo);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease;
+  box-shadow: 3px 3px 0 var(--text-primary);
   pointer-events: auto;
 }
 
 .auto-scroll-btn:hover {
-  transform: translateY(-3px) scale(1.04);
-  background: var(--glass-bg-hover);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--text-primary);
+  background: var(--bg-card);
   color: var(--text-primary);
-  border-color: var(--border-glass-strong);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.45),
-    0 0 20px rgba(120, 130, 255, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .auto-scroll-btn.active {
-  background: rgba(120, 130, 255, 0.2);
-  color: var(--accent-light);
-  border-color: rgba(120, 130, 255, 0.3);
-  box-shadow:
-    0 8px 32px rgba(120, 130, 255, 0.15),
-    0 0 24px rgba(120, 130, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: var(--accent);
+  color: #FFFDF8;
+  border-color: var(--text-primary);
 }
 
 .auto-scroll-btn.active:hover {
-  background: rgba(120, 130, 255, 0.28);
-  box-shadow:
-    0 12px 40px rgba(120, 130, 255, 0.2),
-    0 0 32px rgba(120, 130, 255, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: var(--accent-light);
 }
 
 .auto-scroll-btn:active {
-  transform: scale(0.92);
-  transition-duration: 0.15s;
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--text-primary);
+  transition-duration: 0.05s;
 }
 
 /* Safe area for notched devices */
 @supports (padding: env(safe-area-inset-top)) {
   .app-header {
-    padding-top: calc(1.25rem + env(safe-area-inset-top));
+    padding-top: calc(1rem + env(safe-area-inset-top));
   }
 }
