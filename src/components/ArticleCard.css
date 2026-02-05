@@ -95,7 +95,7 @@
 /* Image — softened frame */
 .card-image-wrapper {
   width: 100%;
-  max-width: 200px;
+  max-width: 400px;
   aspect-ratio: 1;
   overflow: hidden;
   border-radius: var(--radius-sm);

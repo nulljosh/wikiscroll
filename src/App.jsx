@@ -11,7 +11,7 @@ function AppContent() {
     useArticles();
   const containerRef = useRef(null);
   const observerRef = useRef(null);
-  const [autoScroll, setAutoScroll] = useState(false);
+  const [autoScroll, setAutoScroll] = useState(true);
   const autoScrollRef = useRef(false);
 
   const lastCardRef = useCallback(

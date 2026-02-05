@@ -40,6 +40,7 @@ export default function ArticleCard({ article, index }) {
   const emoji = getEmoji(article.description);
 
   const imageUrl = article.originalImage || article.thumbnail;
+  const isVideo = imageUrl && /\.(mp4|webm|mov|ogg)$/i.test(imageUrl);
   const showImage = imageUrl && !imgError;
 
   return (
@@ -60,17 +61,30 @@ export default function ArticleCard({ article, index }) {
           <span className="card-number">#{index + 1}</span>
         </div>
 
-        {/* Thumbnail */}
+        {/* Thumbnail or Video */}
         {showImage && (
           <div className={`card-image-wrapper ${imgLoaded ? 'loaded' : ''}`}>
-            <img
-              src={imageUrl}
-              alt={article.title}
-              className="card-image"
-              loading="lazy"
-              onLoad={() => setImgLoaded(true)}
-              onError={() => setImgError(true)}
-            />
+            {isVideo ? (
+              <video
+                src={imageUrl}
+                className="card-image"
+                autoPlay
+                loop
+                muted
+                playsInline
+                onLoadedData={() => setImgLoaded(true)}
+                onError={() => setImgError(true)}
+              />
+            ) : (
+              <img
+                src={imageUrl}
+                alt={article.title}
+                className="card-image"
+                loading="lazy"
+                onLoad={() => setImgLoaded(true)}
+                onError={() => setImgError(true)}
+              />
+            )}
           </div>
         )}
 
