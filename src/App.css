@@ -47,6 +47,52 @@
   overscroll-behavior: contain;
 }
 
+/* Auto-scroll button */
+.auto-scroll-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  z-index: 50;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+}
+
+.auto-scroll-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(30, 30, 30, 0.95);
+  color: var(--text-primary);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.auto-scroll-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.auto-scroll-btn.active:hover {
+  background: #7c6cf7;
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.auto-scroll-btn:active {
+  transform: scale(0.93);
+}
+
 /* Safe area for notched devices */
 @supports (padding: env(safe-area-inset-top)) {
   .app-header {
