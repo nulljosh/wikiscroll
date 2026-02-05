@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   scroll-snap-align: start;
-  background: var(--bg-primary);
+  background: transparent;
 }
 
 .error-message-content {
@@ -14,52 +14,75 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1rem;
-  padding: 2rem;
-  max-width: 400px;
+  gap: 1.25rem;
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  /* Glass card */
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
+  border-radius: 28px;
+  border: 1px solid var(--border-glass);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  animation: glassReveal 0.7s var(--ease-out-expo) both;
 }
 
 .error-emoji {
   font-size: 3rem;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
 .error-title {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .error-text {
   font-size: 0.9rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
+/* Retry — glass pill button */
 .btn-retry {
   margin-top: 0.5rem;
-  padding: 0.65rem 1.5rem;
-  background: var(--accent);
-  color: white;
-  border: none;
+  padding: 0.7rem 1.75rem;
+  background: rgba(120, 130, 255, 0.15);
+  color: var(--accent-light);
+  border: 1px solid rgba(120, 130, 255, 0.25);
   border-radius: 100px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px var(--accent-glow);
+  font-family: var(--font);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s var(--ease-out-expo);
+  box-shadow:
+    0 4px 20px rgba(120, 130, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .btn-retry:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--accent-glow);
-  background: #7c6cf7;
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(120, 130, 255, 0.22);
+  border-color: rgba(120, 130, 255, 0.35);
+  box-shadow:
+    0 10px 36px rgba(120, 130, 255, 0.18),
+    0 0 20px rgba(120, 130, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .btn-retry:active {
   transform: scale(0.97);
+  transition-duration: 0.12s;
 }
 
-/* Also used by ErrorBoundary */
+/* Error Boundary */
 .error-boundary {
   height: 100vh;
   height: 100dvh;
@@ -76,20 +99,31 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1rem;
-  padding: 2rem;
+  gap: 1.25rem;
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
+  border-radius: 28px;
+  border: 1px solid var(--border-glass);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .error-boundary-content .error-icon {
   font-size: 3rem;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
 .error-boundary-content h2 {
   font-size: 1.5rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .error-boundary-content p {
   font-size: 0.9rem;
   color: var(--text-secondary);
+  line-height: 1.65;
 }
