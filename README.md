@@ -1,16 +1,42 @@
-# React + Vite
+# 📚 WikiScroll
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**TikTok for Wikipedia** — endlessly scroll through random Wikipedia articles in a sleek, dark-mode interface.
 
-Currently, two official plugins are available:
+## What is it?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+WikiScroll is a full-screen, vertical-scrolling app that serves you random Wikipedia articles one at a time — just like TikTok, but for learning. Swipe up for the next article, swipe down to go back.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🎯 **Snap scrolling** — full-page vertical snap, one article at a time
+- 🌙 **Dark mode** — sleek dark theme with purple accents
+- 📸 **Thumbnails** — article images with blurred backdrop
+- ♾️ **Infinite scroll** — keeps loading more as you go
+- ▶️ **Auto-scroll** — optional 3-second auto-advance (floating play/pause button)
+- 🔄 **Error handling** — retry logic, offline detection, user-friendly error messages
+- 📱 **Mobile-friendly** — responsive, works great on phones
+- 🔗 **Read more** — tap to open the full Wikipedia article
 
-## Expanding the ESLint configuration
+## Tech
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React + Vite (builds to static files)
+- Wikipedia REST API (no backend needed)
+- Vitest for testing (20 tests)
+
+## Run locally
+
+```bash
+cd wikiscroll
+npm install
+npm run dev
+```
+
+Opens at http://localhost:5173
+
+## Live
+
+https://nulljosh.github.io/wikiscroll
+
+## License
+
+MIT
